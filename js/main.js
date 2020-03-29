@@ -5,6 +5,7 @@ jQuery(document).ready(function($){
 		else lang_s.load(function(){ lang_process(t); }).attr("src", "../js/langs/" + $(t).text() + ".js");
 	}
 	function lang_process(t) {
+		console.log('test');
 		history.pushState(null, "", "/" + $(t).text() + "/");
 		$("title").text(window.CurrentLang.title);
 		$('meta[name="description"]', 'meta[name="keywords"]').attr("content", window.CurrentLang.title);
