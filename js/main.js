@@ -9,8 +9,12 @@ window.onload = function () {
     console.log(lang);
     var scr = document.createElement("script");
     scr.setAttribute("src", "/js/langs/"+lang+".js");
-    document.getElementsByTagName("head")[0].appendChild(scr);
+	scr.setAttribute("onload", "setLangs()");
+	document.getElementsByTagName("head")[0].appendChild(scr);
+};
+
+function setLangs() {
     document.getElementsByTagName("title")[0].innerHTML = window.CurrentLang.title;
     document.getElementsByTagName("h1")[0].innerHTML = window.CurrentLang.first;
-    document.getElementsByTagName("p")[0].innerHTML = window.CurrentLang.second;
-};
+    document.getElementsByTagName("p")[0].innerHTML = window.CurrentLang.second;	
+}
