@@ -4,7 +4,7 @@ jQuery(document).ready(function($){
 	}	
 	function lang_process() {
 		var t = this, curr, lang_s = $("#langs_script");
-		if (!lang_s.is("script")) $("<script />", {src: "../js/langs/" + $(this).text() + ".js", id: "langs_script"}).load(function(){
+		if (!lang_s.is("script")) $("<script />", {src: "../js/langs/" + $(this).text() + ".js", id: "langs_script"}).on("load", function(){
 			lang_test_onload(t);
 		}).appendTo("head");
 		else lang_s.load(function(){ lang_test_onload(t); }).attr("src", "../js/langs/" + $(this).text() + ".js");
