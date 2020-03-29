@@ -1,4 +1,5 @@
 window.onload = function () {
     console.log("test js");
-    console.log(window.navigator);
+	let lang = window.navigator.language || window.navigator.systemLanguage;
+	console.log(lang);
 }
