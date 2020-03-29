@@ -16,7 +16,7 @@ jQuery(document).ready(function($){
 		if (!lang_s.is("script")) $("<script />", {src: "../js/langs/" + $(this).text() + ".js", id: "langs_script"}).on("load", function(){
 			lang_process(t);
 		}).appendTo("head");
-		else lang_s.on("load", function(){ lang_process(t); }).attr("src", "../js/langs/" + $(this).text() + ".js");
+		else lang_s.off().on("load", function(){ lang_process(t); }).attr("src", "../js/langs/" + $(this).text() + ".js");
 	}
 	$(".langs a").click(lang_start);
 });
