@@ -10,7 +10,7 @@ window.onload = function () {
     var scr = document.createElement("script");
     scr.setAttribute("src", "/js/langs/"+lang+".js");
     document.getElementsByTagName("head")[0].appendChild(scr);
-    document.getElementsByTagName("title")[0].innerHTML = "My site";
-    document.getElementsByTagName("h1")[0].innerHTML = "Hello World";
-    document.getElementsByTagName("p")[0].innerHTML = "I'm hosted with GitHub Pages.";
+    document.getElementsByTagName("title")[0].innerHTML = window.CurrentLang.title;
+    document.getElementsByTagName("h1")[0].innerHTML = window.CurrentLang.first;
+    document.getElementsByTagName("p")[0].innerHTML = window.CurrentLang.second;
 };
