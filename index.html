@@ -2,6 +2,17 @@
 <html>
     <head>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	    <script>
+	    if (window.localStorage) {
+	var lang = localStorage.getItem("lang");
+	if (lang == null) {
+        lang = window.navigator.language || window.navigator.systemLanguage.substring(0, 2);
+		if (lang != "uk" && lang != "ru" && lang != "en") lang = "en";
+        localStorage.setItem("lang", lang);
+    }
+	location.href = "/"+lang+"/";
+}
+	    </script>
 	<script type="text/javascript" src="/js/main.js"></script>
 	<title>My site</title>
 	<meta charset="utf-8" />	
