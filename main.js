@@ -1,4 +1,4 @@
 window.onload = function () {
     console.log("test js");
-    alert(window.navigator.language);
+    alert(window.navigator.languages);
 }
