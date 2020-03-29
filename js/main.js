@@ -1,8 +1,8 @@
 jQuery(document).ready(function($){	
 	function lang_start() {
 		var t = this, lang_s = $("#langs_script");
-		if (!lang_s.is("script")) $("<script />", {src: "../js/langs/" + $(this).text() + ".js", id: "langs_script"}).load(function(){ lang_process(t) }).appendTo("head");
-		else lang_s.load(function(){ lang_process(t) }).attr("src", "../js/langs/" + $(this).text() + ".js");
+		if (!lang_s.is("script")) $("<script />", {src: "../js/langs/" + $(t).text() + ".js", id: "langs_script"}).load(function(){ lang_process(t); }).appendTo("head");
+		else lang_s.load(function(){ lang_process(t); }).attr("src", "../js/langs/" + $(t).text() + ".js");
 	}
 	function lang_process(t) {
 		history.pushState(null, "", "/" + $(t).text() + "/");
