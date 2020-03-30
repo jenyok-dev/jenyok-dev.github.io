@@ -1,32 +1,52 @@
-jQuery(document).ready(function($){
+window.onload = function() {
+
+	var k, d = document, l_a = d.querySelectorAll(".langs a");
 
 	function lang_process(t) {
 
-		var curr = $("span", t.parentNode);
+		var a = d.createElement("a"),
+		span  = d.createElement("span"),
+		curr  = t.parentNode.querySelector("span");
 
-		history.pushState(null, "", "/" + $(t).text() + "/");
+		history.pushState(null, "", "/" + t.innerText + "/");
 
-		$("<a />", {href: "javascript:;", text: curr.text()}).click(lang_handler).insertBefore(curr);
-		$("<span />", {text: $(t).text()}).insertBefore(t);
-		curr.remove(); $(t).remove();
+		a.addEventListener("click", lang_handler, false);
+		a.href         = "javascript:;";
+		a.innerText    = curr.innerText;
+		span.innerText = t.innerText;
 
-		$("title").text(window.CurrentLang.title);
-		$('meta[name="description"]', 'meta[name="keywords"]').attr("content", window.CurrentLang.title);
-		$("h1").text(window.CurrentLang.first);
-		$("p").text(window.CurrentLang.second);
-		
+		t.parentNode.insertBefore(a, curr);
+		t.parentNode.insertBefore(span, t);	
+		t.parentNode.removeChild(curr);
+		t.parentNode.removeChild(t);
+
+		// change language in tags
+		d.querySelector("title").innerText = window.CurrentLang.title;
+		d.querySelector('meta[name="description"]').content = window.CurrentLang.title;
+		d.querySelector('meta[name="keywords"]').content = window.CurrentLang.title;
+		d.querySelector("h1").innerText = window.CurrentLang.first;
+		d.querySelector("p").innerText = window.CurrentLang.second;
+
 	}
 
 	function lang_handler() {
-		var t = this, script = document.createElement("script");
-		script.src    = "../js/langs/" + $(this).text() + ".js";
+
+		var t  = this, 
+		script = d.createElement("script"),
+		list   = d.querySelectorAll("script");
+
+		if (list.length == 2) list[0].parentNode.removeChild(list[1]);
+
+		script.src    = "../js/langs/" + this.innerText + ".js";
 		script.onload = function() { lang_process(t); };
-		script.id     = "langs_script";
-		$("#langs_script").remove();
-		document.getElementsByTagName("head")[0].appendChild(script);
-		localStorage.setItem("lang", $(this).text());
+		list[0].parentNode.appendChild(script);
+
+		localStorage.setItem("lang", this.innerText);
+
 	}
 
-	$(".langs a").click(lang_handler);
+	for(k in l_a)
+		if (typeof l_a[k] == "object") 
+			l_a[k].addEventListener("click", lang_handler, false);
 
-});
+};

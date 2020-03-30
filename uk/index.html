@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="../css/style.css">
-		<script type="text/javascript" src="../js/jquery.min.js"></script>
-		<script type="text/javascript" src="../js/main.js"></script>
 		<title>Мій сайт</title>
-		<meta charset="utf-8" />	
+		<meta charset="utf-8" />
 		<meta name="description" content="Мій сайт" />
 		<meta name="keywords" content="Мій сайт" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!--[if lte IE 9]>
+		<script>
+			window.onload=function(){document.write("<h1>Your browser very old, please update or change! IE >= 10 version</h1>");};
+		</script>
+	<![endif]-->
+	<!--[if !(IE) | (gte IE 10) ]>-->
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script type="text/javascript" src="../js/main.js"></script>
+	<!--<![endif]-->
 	</head>
 	<body>
 		<center>

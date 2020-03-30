@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<!--[if lte IE 9]>
 		<script>
-		if (window.localStorage) {
-			var lang = localStorage.getItem("lang");
-			if (lang == null) {
-				lang = window.navigator.language || window.navigator.systemLanguage.substring(0, 2);
-				if (lang != "uk" && lang != "ru" && lang != "en") lang = "en";
-				localStorage.setItem("lang", lang);
-			}
-			location.href = location.href + lang + "/";
-		} else alert("your browser very old, please update or change");
+			document.write("<h1>Your browser very old, please update or change! IE >= 10 version</h1>");
 		</script>
+	<![endif]-->
+	<!--[if !(IE) | (gte IE 10) ]>-->
+		<script>
+			if (window.localStorage) {
+				var lang = localStorage.getItem("lang");
+				if (lang == null) {
+					lang = window.navigator.language || window.navigator.systemLanguage.substring(0, 2);
+					if (lang != "uk" && lang != "ru" && lang != "en") lang = "en";
+					localStorage.setItem("lang", lang);
+				}
+				location.href = location.href + lang + "/";
+			} else document.write("<h1>Your browser very old, please update or change!</h1>");
+		</script>
+	<!--<![endif]-->
 	</head>
+	<body><noscript>Please switch javascript your browser</noscript></body>
 </html>
