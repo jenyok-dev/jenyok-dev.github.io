@@ -10,7 +10,7 @@ window.onload = function() {
 
 		history.pushState(null, "", "/" + t.innerText + "/");
 
-		a.addEventListener("click", lang_handler, false);
+		a.addEventListener("click", lang_switch, false);
 		a.href         = "javascript:;";
 		a.innerText    = curr.innerText;
 		span.innerText = t.innerText;
@@ -29,7 +29,7 @@ window.onload = function() {
 
 	}
 
-	function lang_handler() {
+	function lang_switch() {
 
 		var t  = this, 
 		script = d.createElement("script"),
@@ -47,6 +47,6 @@ window.onload = function() {
 
 	for(k in l_a)
 		if (typeof l_a[k] == "object") 
-			l_a[k].addEventListener("click", lang_handler, false);
+			l_a[k].addEventListener("click", lang_switch, false);
 
 };
