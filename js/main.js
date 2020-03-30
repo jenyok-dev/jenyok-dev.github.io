@@ -7,13 +7,19 @@ window.onload = function() {
 		var a = d.createElement("a"),
 		span  = d.createElement("span"),
 		curr  = t.parentNode.querySelector("span");
-
-		history.pushState(null, "", "/" + t.innerText + "/");
-
+		
+		try { 
+			history.pushState(null, "", "/" + t.innerText + "/"); 
+		} catch (e) { 
+			return alert(e);
+		}
+		
 		a.addEventListener("click", lang_switch, false);
 		a.href         = "javascript:;";
 		a.innerText    = curr.innerText;
 		span.innerText = t.innerText;
+
+		localStorage.setItem("lang", t.innerText);
 
 		t.parentNode.insertBefore(a, curr);
 		t.parentNode.insertBefore(span, t);	
@@ -40,8 +46,6 @@ window.onload = function() {
 		script.src    = "../js/langs/" + this.innerText + ".js";
 		script.onload = function() { lang_process(t); };
 		list[0].parentNode.appendChild(script);
-
-		localStorage.setItem("lang", this.innerText);
 
 	}
 
